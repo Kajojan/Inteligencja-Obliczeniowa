@@ -24,18 +24,15 @@ y = df["species"]
 # y = pd.get_dummies(y, drop_first=True)
 
 
-X_train, X_test, y_train, y_test = train_test_split(X, y,train_size=0.7, random_state=1)
+X_train, X_test, y_train, y_test = train_test_split(X, y,train_size=0.7, random_state=278892)
 
 # k_range= [3,5,11]
-# score={}
-# score_list=[]
+
 # for i in k_range:
 #     knn=KNeighborsClassifier(n_neighbors=i)
 #     knn.fit(X_train,y_train)
 #     y_pred=knn.predict(X_test)
 #     print(i , " - "  ,metrics.accuracy_score(y_test,y_pred)*100)
-#     # print(y_test, y_pred)
-#     # print(confusion_matrix(y_test, y_pred))
 #     y_pred_labels = np.argmax(y_pred, axis=1)
 #     y_test_labels = np.argmax(y_test.values, axis=1)
 #     cm = confusion_matrix(y_test_labels, y_pred_labels)
@@ -59,5 +56,7 @@ f1 = f1_score(y_pred, y_test, average="weighted")
 
 print("Accuracy:", accuray)
 print("F1 Score:", f1)
+
+print(1/(1+np.exp(-0.79853419159)))
 
 
