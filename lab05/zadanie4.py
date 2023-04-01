@@ -57,6 +57,5 @@ f1 = f1_score(y_pred, y_test, average="weighted")
 print("Accuracy:", accuray)
 print("F1 Score:", f1)
 
-print(1/(1+np.exp(-0.79853419159)))
 
 

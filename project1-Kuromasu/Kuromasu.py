@@ -1,30 +1,32 @@
 import numpy as np
 import pygad
-import random
-plansza = [  [0, 1, 0, 0,0],
-             [0, 0, 0, 0,0],
-             [0, 0, 2, 0,0],
-             [0, 1, 0, 0,0] ]
 
+import copy
+import random
+import time
+
+from plansze import liczba, plansza, gene_space
+# liczba = 5
 
 
 def fitness_func(solution, solution_idx):
-    helper = plansza
-    print("sol", solution)
-    for coord in solution:
-        x, y = coord
-        if helper[x][y] == 0:
-            helper[x][y]=-1
-    print(*helper, sep="\n")
+    helper = copy.deepcopy(plansza)
+    kara = 0
+    kara2 = 0
 
+    for coord in range(0,len(solution),2) :
+        # print(solution[coord],solution[coord+1])
+        if helper[solution[coord]][solution[coord+1]] == 0:
+            helper[solution[coord]][solution[coord+1]] = -1
+        elif helper[solution[coord]][solution[coord+1]] == -1:
+            kara=100
+        else:
+            kara2+=100
     
-    # for x in range(len(plansza)):
-    #     for y in range(len(plansza)):
 
     score = 0 #ile liczb sie zgadza 
     liczb = 0 #ile pól z liczbami 
     black = [] #czarne potrzebne 
-    kara = 0
     for row in range(len(helper)):
         for col in range(len(helper[row])):
             # print(helper[row][col] )
@@ -76,10 +78,13 @@ def fitness_func(solution, solution_idx):
                         if helper[x][y] == -1:
                             kara=100
                             break
+    
+    fitness=(score/liczb * 100) - kara 
+    if fitness ==100:
+        print("\n")
+        print(*helper, sep="\n")
 
-    fitness=( (score/liczb * 100)  ) - (len(solution)-len(black)) - kara
-    if fitness < 0 :
-        fitness=0
+   
     return fitness
 
 
@@ -87,18 +92,20 @@ def fitness_func(solution, solution_idx):
 fitness_function = fitness_func
 
 sol_per_pop = 300
-num_genes = random.randint(1, (len(plansza)*len(plansza))/2)
-# gene_space = range(4),range(4)
-gene_space = [np.array([i, j]) for i in range(4) for j in range(4)]
-# gene_type = np.array([np.array([0, 0])] * num_genes, dtype=object)
-num_parents_mating = 150
-num_generations = 50
+# num_genes = random.randint(1, np.round((len(plansza)*len(plansza))/2) )*2
+num_genes = liczba*2
+# print(num_genes/2)
+
+num_parents_mating = 100
+num_generations = 250
 keep_parents = 2
 parent_selection_type = "sss"
 crossover_type = "single_point"
 mutation_type = "random"
 mutation_percent_genes = 4
-
+srednia=[]
+for i in range(0,10):
+    start=time.time()
 ga_instance = pygad.GA(gene_space=gene_space,
                         num_generations=num_generations,
                         num_parents_mating=num_parents_mating,
@@ -110,8 +117,11 @@ ga_instance = pygad.GA(gene_space=gene_space,
                         crossover_type=crossover_type,
                         mutation_type=mutation_type,
                         mutation_percent_genes=mutation_percent_genes,
+                        gene_type=int
                         )
 ga_instance.run()
+end=time.time()
+srednia.append(end-start)
 
 solution, solution_fitness, solution_idx = ga_instance.best_solution()
 
@@ -120,6 +130,7 @@ solution, solution_fitness, solution_idx = ga_instance.best_solution()
 solution, solution_fitness, solution_idx = ga_instance.best_solution()
 print("Parameters of the best solution : {solution}".format(solution=solution))
 print("Fitness value of the best solution = {solution_fitness}".format(solution_fitness=solution_fitness))
+print("srednia czas", sum(srednia)/len(srednia))
 
 
 ga_instance.plot_fitness()
