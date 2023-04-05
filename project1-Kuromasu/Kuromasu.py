@@ -78,10 +78,10 @@ def fitness(plansza):
         return fitness
     
 
-    sol_per_pop = 150  #100 # #350 300
+    sol_per_pop = 1000  #100 # #350 300
     num_genes = liczba*2
     num_parents_mating = 100
-    num_generations =50  #300  #20
+    num_generations =300  #300  #20
     keep_parents = 2
     parent_selection_type = "sss"
     crossover_type = "single_point"

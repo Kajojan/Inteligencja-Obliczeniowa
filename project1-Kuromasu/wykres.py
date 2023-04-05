@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # wczytanie danych
-df = pd.read_csv('./dane.csv')
+df = pd.read_csv('./dane3.csv')
 
 # podzielenie danych na dwie serie
 df_5x5 = df[df['rozmiar']=='5x5']
