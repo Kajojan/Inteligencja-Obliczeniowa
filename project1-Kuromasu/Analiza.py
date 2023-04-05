@@ -1,10 +1,10 @@
 from Kuromasu import *
-import Kuromasu
-import copy
-import pygad
 from plansze import liczba, plansze, gene_space
 import random
+import pandas as pd
 import time
+import matplotlib.pyplot as plt
+
 
 
 setki={}
@@ -25,4 +25,20 @@ s=0
 for i in setki["100.0"]:
     s+=i[1]
     print(i[0],"\n")
-print("sredni czas dla 100 ", s/len(setki["100.0"]))
+print("sredni czas dla setek ", s/len(setki["100.0"]))
+
+import csv
+
+# przykładowe dane
+
+# zapis do pliku
+with open('./dane.csv', mode='a', newline='') as file:
+    writer = csv.writer(file)
+    # writer.writerow(['Kategoria', 'Wartość'])
+    for key in setki:
+        for i in setki[key]:
+            print()
+            writer.writerow(['5x5', key, i[1]])
+
+
+
