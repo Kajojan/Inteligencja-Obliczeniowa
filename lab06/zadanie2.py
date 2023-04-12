@@ -5,7 +5,7 @@ import pandas as pd
 
 iris = pd.read_csv("iris.csv")
 
-[train_set, test_set] = train_test_split(iris.values, train_size=0.7, random_state=278839)
+[train_set, test_set] = train_test_split(iris.values, train_size=0.7, random_state=278892)
 # print(test_labels)
 
 train_input = train_set[:, 0:4]
@@ -18,10 +18,8 @@ test_class = test_set[:, 4]
 # hidden_layer_size(3, 3)
 
 
-clf = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(2, 3), random_state=278839)
+clf = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(3,3), random_state=278892)
 clf.fit(train_input, train_class)
-print(clf.predict(test_input))
+# print(clf.predict(test_input))
 print(clf.score(test_input, test_class))
 
-prediction = clf.predict(test_set)
-print(prediction)
