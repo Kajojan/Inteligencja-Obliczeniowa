@@ -42,7 +42,6 @@ for i in range(0,6000):
       data2 = data2.drop(i, axis=0)
 
 
-print(data2['target'].value_counts()[0]/len(data2))
 # print(data2)
 # print(data)
 # print(data['target'].value_counts()[0]/len(data))
