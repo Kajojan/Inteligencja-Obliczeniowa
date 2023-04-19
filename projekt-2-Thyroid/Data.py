@@ -41,9 +41,3 @@ for i in range(0,6000):
    if data2['target'][i] == "-":
       data2 = data2.drop(i, axis=0)
 
-
-# print(data2)
-# print(data)
-# print(data['target'].value_counts()[0]/len(data))
-
-

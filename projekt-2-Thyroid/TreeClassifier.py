@@ -13,8 +13,8 @@ all_classes = data['target'].values
 all_inputs2 = data2.drop('target', axis=1).values
 all_classes2 = data2['target'].values
 
-(train_inputs, test_inputs, train_classes, test_classes) = train_test_split(all_inputs, all_classes, train_size=0.7, random_state=92)
-(train_inputs2, test_inputs2, train_classes2, test_classes2) = train_test_split(all_inputs2, all_classes2, train_size=0.7, random_state=92)
+(train_inputs, test_inputs, train_classes, test_classes) = train_test_split(all_inputs, all_classes, train_size=0.7, random_state=278892)
+(train_inputs2, test_inputs2, train_classes2, test_classes2) = train_test_split(all_inputs2, all_classes2, train_size=0.7, random_state=278892)
 
 
 dtc = DecisionTreeClassifier()
