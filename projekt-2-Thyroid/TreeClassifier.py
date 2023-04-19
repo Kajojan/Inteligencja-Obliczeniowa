@@ -17,9 +17,6 @@ all_classes2 = data2['target'].values
 (train_inputs2, test_inputs2, train_classes2, test_classes2) = train_test_split(all_inputs2, all_classes2, train_size=0.7, random_state=92)
 
 
-# wiersze, kolumny = np.where(data == "f")
-# for i in range(len(wiersze)):
-#     print(f"Wartość f znajduje się w wierszu {wiersze[i]} i kolumnie {kolumny[i]}")
 dtc = DecisionTreeClassifier()
 dtc.fit(train_inputs, train_classes)
 dtc.score(test_inputs, test_classes)
