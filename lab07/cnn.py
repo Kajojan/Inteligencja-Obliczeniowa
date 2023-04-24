@@ -33,10 +33,10 @@ for i in range(128):
 
 # konwersja macierzy na obrazek i wyświetlenie
 
-# filter=[[1,0,-1],[1,0,-1],[1,0,-1]]
+filter=[[1,0,-1],[1,0,-1],[1,0,-1]]
 # filter=[[1 ,1 ,1], [0,0,0],[-1,-1,-1]]
 # filter=[[0,1,2],[-1,0,1],[-2,-1,0]]
-filter=[[2,1,0],[1,0,-1],[0,-1,-2]]
+# filter=[[2,1,0],[1,0,-1],[0,-1,-2]]
 
 
 for i in range(0,len(data)):

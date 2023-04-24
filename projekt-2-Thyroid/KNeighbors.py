@@ -32,7 +32,9 @@ for i in k_range:
     y_pred_labels = np.argmax(y_pred, axis=1)
     y_test_labels = np.argmax(y_test.values, axis=1)
     cm = metrics.confusion_matrix(y_test_labels, y_pred_labels)
-    print(cm,"\n")
+    disp = metrics.ConfusionMatrixDisplay(confusion_matrix=cm)
+    disp.plot()
+    plt.show()
 
 for i in k_range:
     knn=KNeighborsClassifier(n_neighbors=i)
@@ -42,4 +44,5 @@ for i in k_range:
     y_pred_labels = np.argmax(y_pred, axis=1)
     y_test_labels = np.argmax(y_test2.values, axis=1)
     cm = metrics.confusion_matrix(y_test_labels, y_pred_labels)
-    print(cm,"\n")
+    disp.plot()
+    plt.show()
