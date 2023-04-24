@@ -1,8 +1,11 @@
+import re
 import pandas as pd
 
 
 data=pd.read_csv("thyroidDF.csv")
 data = data.drop('patient_id', axis=1)
+data = data.drop('referral_source', axis=1)
+
 data['on_thyroxine'] = data['on_thyroxine'].replace({'t': 1.0, 'f': 0.0})
 data['query_on_thyroxine'] = data['query_on_thyroxine'].replace({'t': 1.0, 'f': 0.0})
 data['hypopituitary'] = data['hypopituitary'].replace({'t': 1.0, 'f': 0.0})
@@ -24,20 +27,60 @@ data['T4U_measured'] = data['T4U_measured'].replace({'t': 1.0, 'f': 0.0})
 data['FTI_measured'] = data['FTI_measured'].replace({'t': 1.0, 'f': 0.0})
 data['TBG_measured'] = data['TBG_measured'].replace({'t': 1.0, 'f': 0.0})
 
-data['sex'] = data['TBG_measured'].replace({'F': 1.0, 'M': 0.0})
+data['sex'] = data['sex'].replace({'F': 1.0, 'M': 0.0})
 
-data = data.drop('referral_source', axis=1)
+# rs_encoder = { 'other' : 0, 'SVI' : 1, 'SVHC' : 2, 'STMW' : 3, 'SVHD' : 4, 'WEST' : 5}
+# data['referral_source'] = data['referral_source'].map(rs_encoder)
+# print(data['referral_source'].unique())
+# print(data)
+print(data['target'][2261])
+
+pattern = re.compile(r'([A-T])([A-T])')
+data['target'] = data['target'].apply(lambda x: pattern.sub(r'\2', x))
+pattern = re.compile(r'([A-T])[|]([A-T])')
+data['target'] = data['target'].apply(lambda x: pattern.sub(r'\2', x))
+print(data['target'][2261])
+
+
+diagnoses = {'-':"negative",
+            'A': 'hyperthyroid', 
+             'B': 'hyperthyroid', 
+             'C': 'hyperthyroid', 
+             'D': 'hyperthyroid',
+             'E': 'hypothyroid', 
+             'F': 'hypothyroid', 
+             'G': 'hypothyroid', 
+             'H': 'hypothyroid',
+             "J": 'binding protein',
+             "I": 'binding protein',
+             "K" :'general health',
+             "L" : 'replacement therapy',
+             "M" : 'replacement therapy',
+             "N" : 'replacement therapy',
+             "O":'antithyroid treatment',
+             "P":'antithyroid treatment',
+             "Q":'antithyroid treatment',
+             "R":'miscellaneous',
+             "S":'miscellaneous',
+             "T":'miscellaneous'}
+
+data['target'] = data['target'].map(diagnoses) # re-mapping
+# print(data['target'].unique())
 data = data.fillna(0)
+print(data['target'].unique())
+print(data.loc[data['target'] == 0])
+
+# print(data['referral_source'].apply(lambda x: str(x)).str.isnumeric().any())
 data2 = data
 #usunięcie danych aby było proporcjolanie chory/zdrowy 
 #data wiekszy % zdrowych 65/35
 #data2 mniejszy % zdrowych 45/55
 for i in range(0,2500):
-   if data['target'][i] == "-":
+   if data['target'][i] == "negative":
       data = data.drop(i, axis=0)
 
 
 for i in range(0,6000):
-   if data2['target'][i] == "-":
+   if data2['target'][i] == "negative":
       data2 = data2.drop(i, axis=0)
 

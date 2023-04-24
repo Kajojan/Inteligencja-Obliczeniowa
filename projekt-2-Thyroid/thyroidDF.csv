@@ -2260,7 +2260,7 @@ age,sex,on_thyroxine,query_on_thyroxine,on_antithyroid_meds,sick,pregnant,thyroi
 39,F,f,f,f,f,f,f,f,f,f,f,f,f,f,f,t,0.5,t,2.2,t,121,t,1.01,t,121,f,,other,-,850411062
 62,M,f,f,f,f,f,f,f,f,f,f,f,f,f,f,t,17,t,1.7,t,65,t,0.68,t,97,f,,other,G,850412003
 77,F,f,f,f,f,f,f,f,f,f,f,f,f,f,f,t,23,t,0.5,t,33,t,0.67,t,49,f,,SVI,F,850412005
-77,F,f,f,f,f,f,f,f,f,f,f,f,f,f,f,t,18,t,0.3,t,44,t,0.56,t,77,f,,SVI,GKJ,850412006
+77,F,f,f,f,f,f,f,f,f,f,f,f,f,f,f,t,18,t,0.3,t,44,t,0.56,t,77,f,,SVI,GJ,850412006
 85,F,f,f,f,f,f,f,f,t,f,f,f,f,f,f,t,7.3,t,2.4,t,66,t,1.09,t,61,f,,other,-,850412011
 41,F,f,f,f,f,f,f,f,f,f,f,f,t,f,f,f,,f,,f,,f,,f,,t,8.799999,other,-,850412019
 38,F,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,,f,,f,,f,,f,,t,33,other,S,850412021
@@ -8777,7 +8777,6 @@ age,sex,on_thyroxine,query_on_thyroxine,on_antithyroid_meds,sick,pregnant,thyroi
 57,M,f,f,f,f,f,f,f,f,f,f,f,f,f,f,t,0.78,f,,t,134,t,0.94,t,143,f,,SVHC,-,870113029
 51,F,f,f,f,f,f,f,f,t,f,f,f,f,f,f,t,1.4,t,1.5,t,37,t,0.71,t,52,f,,SVI,K,870113030
 56,M,f,f,f,f,f,f,f,f,f,f,f,f,f,f,t,0.53,f,,t,107,t,0.97,t,109,f,,SVI,-,870113032
-71,,f,f,f,f,f,f,f,f,f,f,f,f,f,f,t,3.8,f,,t,83,t,0.77,t,108,f,,SVI,-,870113033
 69,M,f,f,f,f,f,f,f,f,f,f,t,f,f,f,t,0.16,t,1,t,106,t,1.24,t,86,f,,SVI,K,870113034
 70,M,f,f,f,f,f,f,f,f,f,f,f,f,f,f,t,2.1,t,0.7,t,81,t,0.57,t,142,f,,SVI,K,870113036
 63,F,t,f,f,f,f,f,f,f,f,f,f,f,f,f,t,11,f,,t,57,t,1,t,57,f,,other,F,870113038
@@ -8793,3 +8792,5 @@ age,sex,on_thyroxine,query_on_thyroxine,on_antithyroid_meds,sick,pregnant,thyroi
 64,M,f,f,f,f,f,f,f,t,f,f,f,f,f,f,f,,f,,t,44,t,0.53,t,83,f,,other,J,870119002
 36,F,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,,f,,t,84,t,1.26,t,67,f,,other,I,870119008
 69,M,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,,f,,t,113,t,1.27,t,89,f,,SVI,I,870119025
+71,,f,f,f,f,f,f,f,f,f,f,f,f,f,f,t,3.8,f,,t,83,t,0.77,t,108,f,,SVI,-,870113033
+

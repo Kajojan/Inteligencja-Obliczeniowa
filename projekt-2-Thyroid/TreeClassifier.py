@@ -6,7 +6,6 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn import tree
 from Data import data, data2
 
-
 all_inputs = data.drop('target',axis=1).values
 all_classes = data['target'].values
 

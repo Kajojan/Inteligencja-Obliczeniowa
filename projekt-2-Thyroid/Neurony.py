@@ -41,16 +41,25 @@ model.add(Dense(2, activation='relu'))
 
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
+# compile the keras model
+# model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+# fit the keras model on the dataset
+# model.fit(X, y, epochs=150, batch_size=10)
+# evaluate the keras model
 
-history = model.fit(train_data, train_labels, epochs=500, batch_size=32, verbose=0, validation_data=(test_data, test_labels))
 
-predictions_test_probs = model.predict(test_data)
-predictions_test_probs = predictions_test_probs.flatten()
+model.fit(train_data, train_labels, epochs=500, batch_size=32, verbose=0, validation_data=(test_data, test_labels))
 
-threshold = 0.5
-predictions_test = [1 if prob > threshold else 0 for prob in predictions_test_probs]
+# predictions_test_probs = model.predict(test_data)
+# predictions_test_probs = predictions_test_probs.flatten()
 
-accuracy = accuracy_score(test_labels, predictions_test)
+# threshold = 0.5
+# predictions_test = [1 if prob > threshold else 0 for prob in predictions_test_probs]
 
-print("Accuracy: " + str(round(accuracy*100,2)) + "%")
+# accuracy = accuracy_score(test_labels, predictions_test)
+
+# print("Accuracy: " + str(round(accuracy*100,2)) + "%")
+
+_, accuracy = model.evaluate(test_labels, test_data)
+print('Accuracy: %.2f' % (accuracy*100))
 
