@@ -4,8 +4,7 @@ import pandas as pd
 
 data=pd.read_csv("thyroidDF.csv")
 data = data.drop('patient_id', axis=1)
-# data = data.drop('referral_source', axis=1)
-
+# print(data)
 data['on_thyroxine'] = data['on_thyroxine'].replace({'t': 1.0, 'f': 0.0})
 data['query_on_thyroxine'] = data['query_on_thyroxine'].replace({'t': 1.0, 'f': 0.0})
 data['hypopituitary'] = data['hypopituitary'].replace({'t': 1.0, 'f': 0.0})
@@ -76,3 +75,4 @@ for i in range(0,1500):
 for i in range(0,5300):
    if data2['target'][i] == "negative":
       data2 = data2.drop(i, axis=0)
+
