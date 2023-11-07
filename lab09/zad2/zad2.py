@@ -89,33 +89,8 @@ def fitness_func(solution, solution_idx):
                     break
 
     fit += (numpy.abs(x - 7) + numpy.abs(y - 7))*-1
-    # print(fit)
     return fit
-# # Definicja funkcji fitness
-# def fitness_function(solution, sol_idx):
-#     # Stworzenie środowiska gry FrozenLake8x8
-#     env = gym.make("FrozenLake8x8-v1", is_slippery=False)
-#     action = solution[0]
-#     # Resetowanie środowiska
-#     observation = env.reset()
-    
-#     # Wykonanie ruchów na podstawie chromosomu
-#     for action in solution:
-#         # Wykonanie akcji w środowisku
-#         observation = env.step(action)[0]
-#         reward = env.step(action)[1]
-#         print(env.step(action))
-#         done = env.step(action)[2]
-#         # Jeśli osiągnięto cel lub upłynęło zbyt wiele kroków, zakończ grę
-#         if done:
-#             break
-    
-#     # Obliczenie wartości fitness
-#     fitness = reward
-#     print(fitness)
-#     return fitness*-1
 
-# Stworzenie instancji algorytmu genetycznego
 ga_instance = pygad.GA(gene_space=gene_space,
                        num_generations=500, 
                        sol_per_pop=200, 

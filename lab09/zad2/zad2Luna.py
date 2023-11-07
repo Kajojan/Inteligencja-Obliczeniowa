@@ -12,7 +12,6 @@ def fitness_function(solution, sol_idx):
     x=0
     y=0
     for action in solution:
-        # print(env.step(action))
         observation, reward, done,info,_ = env.step(action)
 
         if done:
@@ -23,15 +22,14 @@ def fitness_function(solution, sol_idx):
     fitness = reward - (numpy.abs(x ) + numpy.abs(y ))
 
     if(reward==-100):
-        fitness+=1000
+        fitness+=100000
 
     return fitness*-1
 
 
-num_generations = 2000
-population_size = 600
+num_generations = 500
+population_size = 200
 
-# Tworzenie instancji algorytmu genetycznego
 ga_instance = pygad.GA(gene_space=gene_space,
                         num_generations=num_generations, 
                        sol_per_pop=population_size, 
@@ -41,10 +39,8 @@ ga_instance = pygad.GA(gene_space=gene_space,
                        num_parents_mating=50, 
                        fitness_func=fitness_function)
 
-# Uruchomienie algorytmu genetycznego
 ga_instance.run()
 
-# Wyświetlenie najlepszego rozwiązania
 solution, solution_fitness, solution_idx = ga_instance.best_solution()
 print("Najlepsze rozwiązanie: {solution}".format(solution=solution))
 print("Wartość fitness najlepszego rozwiązania: {fitness}".format(fitness=solution_fitness))
@@ -52,19 +48,13 @@ print("Wartość fitness najlepszego rozwiązania: {fitness}".format(fitness=sol
 
 env = gym.make("LunarLander-v2", render_mode="human")
 
-# Resetowanie środowiska
 observation, info = env.reset(seed=42)
-# Wykonanie ruchów na podstawie najlepszego rozwiązania
 for action in solution:
     action = int(action)
-    # action=1
     observation, reward, terminated, truncated, info = env.step(action)
-    # print(reward)
-
     env.render()
    
     if terminated:
         break
 
-# Zamknięcie środowiska
 env.close()

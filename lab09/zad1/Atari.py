@@ -14,3 +14,4 @@ for _ in range(500):
 env.close()
 
 
+#dyskretne  skończone 1-5

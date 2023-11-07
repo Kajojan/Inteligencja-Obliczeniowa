@@ -16,4 +16,4 @@ for i in range(500):
       observation, info = env.reset()
 env.close()
 
-#cigły zmiennoprzecinkowy
+#cigły  "box" zmiennoprzecinkowy
